@@ -17,16 +17,17 @@ void	read_map(char *file, t_mass *m)
 	int		fd;
 	char	*line;
 	t_lst	*list;
+	int		ret;
 
 	m->m_y = 0;
 	fd = open(file, O_RDONLY);
 	list = NULL;
-	while (get_next_line(fd, &line) > 0)
+	while ((ret = get_next_line(fd, &line)) > 0)
 	{
 		ft_new_list(&list, line);
 		m->m_y++;
 	}
-	get_next_line(fd, &line) == -1 ? out_error("file isn't read") : 0;
+	ret == -1 ? out_error("file isn't read") : 0;
 	close(fd);
 	if (!(m->map = (t_point **)ft_memalloc(sizeof(t_point *) * m->m_y)))
 		out_error("Error");
