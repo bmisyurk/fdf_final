@@ -19,3 +19,10 @@ void	out_error(char *str)
 	ft_putstr("\n");
 	exit(1);
 }
+
+int		exit_cl(void *click)
+{
+	click = NULL;
+	exit(1);
+	return (0);
+}

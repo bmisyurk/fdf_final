@@ -25,6 +25,7 @@ int	main(int argc, char **argv)
 	put_to_centre(m);
 	map_draw(m);
 	mlx_hook(m->win, 2, 1L << 1, key_hooks, m);
+	mlx_hook(m->win, 17, 1L << 17, exit_cl, m);
 	mlx_loop(m->mlx);
 	return (0);
 }

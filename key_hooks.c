@@ -56,6 +56,20 @@ void	key_zoom(int key, t_mass *m)
 	}
 }
 
+void	key_color(int key, t_mass *m)
+{
+	int	x;
+	int	y;
+
+	y = -1;
+	while (++y < m->m_y)
+	{
+		x = -1;
+		while (++x < m->m_x)
+			(key == 51) ? m->map[y][x].color = 0xFFFFFF : 0;
+	}
+}
+
 int		key_hooks(int key, t_mass *m)
 {
 	if (key == ESC)
@@ -76,6 +90,8 @@ int		key_hooks(int key, t_mass *m)
 		keys_move(key, m);
 	else if (key == 78 || key == 69)
 		key_zoom(key, m);
+	else if (key == 51)
+		key_color(key, m);
 	mlx_clear_window(m->mlx, m->win);
 	map_draw(m);
 	return (0);

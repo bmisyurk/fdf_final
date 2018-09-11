@@ -15,7 +15,7 @@
 
 # define W			1000
 # define H			1000
-# define ESC			53
+# define ESC		53
 
 # include <math.h>
 # include "mlx.h"
@@ -65,5 +65,7 @@ void				keys_rotate(int key, t_mass *t);
 int					key_hooks(int key, t_mass *tg);
 void				keys_move(int key, t_mass *m);
 void				keys_zoom(int key, t_mass *m);
+void				key_color(int key, t_mass *m);
 void				out_error(char *str);
+int					exit_cl(void *click);
 #endif
