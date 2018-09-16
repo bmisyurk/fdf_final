@@ -43,6 +43,8 @@ typedef struct		s_mass
 {
 	void			*mlx;
 	void			*win;
+	void			*img_ptr;
+	unsigned int	*img;
 	t_point			**map;
 	int				m_x;
 	int				m_y;
