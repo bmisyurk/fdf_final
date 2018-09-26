@@ -11,6 +11,7 @@
 #******************************************************************************#
 
 NAME = libft.a
+
 CFLAGS = -Wall -Wextra -Werror
 SRC	= 	ft_memset.c \
 				ft_bzero.c \
@@ -78,22 +79,22 @@ SRC	= 	ft_memset.c \
 				ft_sqrt.c \
 				ft_doop.c \
 				ft_max.c \
-				ft_printbits.c 
+				ft_printbits.c \
+				get_next_line.c \
 
 
-OBJ	= $(SRC:.c=.o)
+OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
 
-
-$(NAME): $(OBJ)
-	gcc $(CFLAGS) -c $(SRC)
-	ar rc $(NAME) $(OBJ)
+$(NAME):
+		@cc $(CFLAGS) -c $(SRC) 
+		@ar rc $(NAME) $(OBJ)
+		@echo "     *****     libft complied     *****     "
 
 clean:
-	rm -f *.o
-
+		@rm -f $(OBJ)
 fclean: clean
-	rm -f $(NAME)
+		@rm -f $(NAME)
 
 re: fclean all

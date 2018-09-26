@@ -27,7 +27,7 @@ int	main(int argc, char **argv)
 		out_error("error");
 	read_map(argv[1], m);
 	m->mlx = mlx_init();
-	m->win = mlx_new_window(m->mlx, W, H, "FDF");
+	m->win = mlx_new_window(m->mlx, W, H, "Fractol");
 	m->img_ptr = mlx_new_image(m->mlx, W, H);
 	m->img = (unsigned int *)mlx_get_data_addr(m->img_ptr, &bit_per_pixel, &size_line, &endian);
 	put_to_centre(m);

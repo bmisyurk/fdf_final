@@ -13,8 +13,10 @@ SRCS		=	main.c \
 
 SRCO		= $(SRCS:.c=.o)
 FLAGS		= -Wall -Wextra -Werror
-MLX			= -lmlx -framework OpenGL -framework Appkit
-LIBS		= libft/libft.a minilibx_macos/libmlx.a
+HEADER      = -I /usr/local/include/ -I includes/
+MLX			= -L /usr/local/lib/ -lmlx -framework OpenGl -framework AppKit -lm -lpthread
+LIBS		= libft/libft.a 
+LIB_DIR = libft/
 DIR = obj
 SRC = $(SRCS)
 OBJ = $(addprefix $(DIR)/,$(SRCO))
@@ -22,25 +24,19 @@ OBJ = $(addprefix $(DIR)/,$(SRCO))
 all: $(NAME)
 
 
-$(NAME): $(LIBS) $(OBJ)
-	@gcc -o $(NAME) $(OBJ) $(LIBS) $(MLX)
+$(NAME): $(OBJ)
+	@make -C $(LIB_DIR)
+	@cc $(OBJ) -o $(NAME) $(HEADER) $(MLX) -L $(LIB_DIR) -lft
+	@echo "     *****     fdf complied     *****     "
+
 
 obj/%.o: %.c
 	@mkdir -p $(DIR)
 	@gcc -c $(FLAGS) -o $@ -c $<
 
-
-$(LIBS):
-
-	@make -C libft
-	@make -C minilibx_macos
-
-
-
 clean:
 	@rm -rf $(OBJ)
 	@make -C libft clean
-	@make -C minilibx_macos clean
 
 fclean: clean
 	@rm -rf $(NAME)
@@ -49,4 +45,3 @@ fclean: clean
 re: fclean all
 
 .PHONY: all, clean, fclean, re
-	
